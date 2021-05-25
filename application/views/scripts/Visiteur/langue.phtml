@@ -1,0 +1,18 @@
+<?php
+echo '<h3>Langues que parlent ce visiteur </3>'; ?>
+<br><br>
+<table border="1">
+    <tr>
+        <th>idLangue</th>
+        <th>Libelle</th>
+        <th>Niveau</th>
+    </tr>
+<?php foreach ($this->lesLanguesParlees as $uneLangueParle) :?>
+    <tr>
+        <td><?php echo $uneLangueParle->idLangue; ?> </td>
+        <td><?php echo $uneLangueParle->getLangue()->libelle; ?> </td>
+        <td><?php echo $uneLangueParle->niveau;?> </td>
+    </tr>
+    <?php endforeach; ?>
+        
+</table>

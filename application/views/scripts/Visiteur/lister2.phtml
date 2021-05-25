@@ -1,0 +1,32 @@
+<p>Nombre de voiture par marque</p>
+
+<table border="1">
+    <tr>
+        <th>Marque</th>
+        <th>Nombre de voitures </th>
+    </tr>
+    <?php
+    foreach ($this->lesLignes as $uneMarque) {
+        var_dump($uneMarque);
+        echo "<tr><td>";
+        echo "</td><td>";
+        echo $uneMarque['nbMarque'];
+        echo "</td></tr>";
+    }
+    ?> 
+</table>
+
+<?php 
+$i = 0;
+while($i<count($this->lesLignes)) {
+            $marqueCourante = $this->lesLignes[$i]['marque'];
+            $nbVoitures = 0;
+            
+            while($i<count($this->lesLignes) && $this->lesLignes[$i]['marque'] == $marqueCourante)
+            {
+                echo $this->lesLignes[$i]['marque']." " . $this->lesLignes[$i]['nom']."<br>";
+                $nbVoitures++;
+                $i++;
+            }
+            echo "nombre de voiture de la marque ".$marqueCourante." : ".$nbVoitures."<br><br>";
+        }

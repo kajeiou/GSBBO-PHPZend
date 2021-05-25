@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headLink()->prependStylesheet($this->baseUrl() . '/css/style.css'); ?>
+    </head>
+    <body>
+        <div id="entete" align="center"><b>LOGICIEL DE GESTION</b><br><br>
+            <?php
+            if (Zend_Auth::getInstance()->hasIdentity()) {
+                echo 'Connecté en tant que : ' . Zend_Auth::getInstance()->getIdentity()->login . ' (role ' .
+                Zend_Auth::getInstance()->getIdentity()->role . ')';
+            } else {
+                echo 'Vous n\'êtes actuellement pas connecté.';
+            }
+            ?>
+        </div>
+        <div id="main" >
+            <div id="menu">
+                <center> 
+                    <h4>Menu de navigation</h4>
+                   </center>
+
+                <?php echo $this->navigation(); ?> 
+                
+            </div>
+            <div id="contenu">
+                
+                <?php echo $this->layout()->content; ?>
+            </div>
+        </div>
+        <div id="footer">
+            <h4>GSB-BO par Nabil</h4>
+        </div>
+    </body>
+</html>

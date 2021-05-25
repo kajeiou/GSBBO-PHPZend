@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+    <nav>
+        <login>
+            <label>Connexion</label>
+            <controller>auth</controller>
+            <action>login</action>
+        </login>
+        <logout>
+            <label>Deconnexion</label>
+            <controller>auth</controller>
+            <action>logout</action>
+        </logout>
+        <visiteur>
+            <label>Gérer les utilisateurs</label>
+            <controller>Visiteur</controller>
+            <action>index</action>
+        </visiteur>
+        <fichefrais>
+            <label>Voir-Exporter les fiches de frais</label>
+            <controller>FicheFrais</controller>
+            <action>index</action>
+        </fichefrais>
+        <tableaudebord>
+             <label>Tableau de bord</label>
+            <controller>TableauDeBord</controller>
+            <action>index</action>
+        </tableaudebord>
+    </nav>
+</config>

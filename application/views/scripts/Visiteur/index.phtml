@@ -1,0 +1,75 @@
+
+<h1>Gestion des visiteurs</h1>
+<a href="<?php echo $this->url(array('controller' => 'visiteur', 'action' => 'ajouter')); ?>">
+    Ajouter un visiteur
+</a><br><br>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Login</th>
+        <th>Langues parlées</th>
+        <th>Date d'embauche</th>
+        <th>Ancienneté</th>
+        <th>Prime d'Ancienneté</th>
+        <th>Rôle</th>
+    </tr>
+
+    <?php foreach ($this->lesVisiteurs as $unVisiteur) : ?>
+        <tr>
+            <td><?php echo $unVisiteur->id; ?></td>
+            <td><?php echo $unVisiteur->nom; ?></td>
+            <td><?php echo $unVisiteur->prenom; ?></td>
+            <td><?php echo $unVisiteur->login; ?></td>
+            <td><?php echo $unVisiteur->getNbLanguesParlees(); ?>
+                <a href="<?php
+                echo $this->url(array('controller' => 'visiteur',
+                    'action' => 'langue', 'id' => $unVisiteur->id));
+                ?>">Detail</a>
+            
+            </td>
+          
+            <td><?php echo $unVisiteur->dateEmbauche ?></td>
+            <td><?php echo $this->anciennete($unVisiteur->dateEmbauche);?></td>
+            <td><?php echo $this->prime($unVisiteur->dateEmbauche); ?></td>
+            <td><?php echo $unVisiteur->role ?></td>
+            <td>
+                <a href="<?php
+                echo $this->url(array('controller' => 'visiteur',
+                    'action' => 'modifier', 'id' => $unVisiteur->id));
+                ?>">Modifier</a>
+                <a href="<?php
+                echo $this->url(array('controller' => 'visiteur',
+                    'action' => 'supprimer', 'id' => $unVisiteur->id));
+                ?>">Supprimer</a>
+            </td> 
+
+        </tr>
+    <?php endforeach; ?>
+
+</table><br><br>
+<div class="pagination">
+<?php
+$pages = $this->lesVisiteurs->getPages();
+if ($pages->current !== $pages->first) {
+    echo "<a href=?page=$pages->first> <<</a>&nbsp;";
+}
+
+if ($pages->current > $pages->first) {
+    echo "<a href=?page=$pages->previous> <</a>&nbsp;";
+}
+
+foreach ($pages->pagesInRange as $page) {
+    echo "<a href=?page=$page>$page</a>&nbsp;";
+}
+if ($pages->current < $pages->last) {
+    echo "<a href=?page=$pages->next> ></a>&nbsp;";
+}
+
+if ($pages->current !== $pages->last) {
+    echo "<a href=?page=$pages->last> >></a>&nbsp;";
+}
+?>
+</div>

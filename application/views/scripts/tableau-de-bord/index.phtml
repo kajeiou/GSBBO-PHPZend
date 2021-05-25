@@ -1,0 +1,35 @@
+<h3>Tableau de bord</h3>
+<table border="1">
+    
+    <tr>
+        <th>Id Utilisateur</th>
+        <th>Mois</th>
+        <th>Nombre de fiches</th>
+        <th>Montant</th>
+    </tr>
+    <?php
+    $i = 0;
+    while ($i < count($this->lesStats)) {
+        $utilisateurCourant = $this->lesStats[$i]['idVisiteur'];
+        $nbFiches = 0;
+        $totalMontant = 0;
+        while ($i < count($this->lesStats) && $this->lesStats[$i]['idVisiteur'] == $utilisateurCourant) {
+            //afficher le détail
+            ?>
+            <tr>
+                <td><?php echo $this->lesStats[$i]['idVisiteur']; ?></td>
+                <td><?php echo $this->lesStats[$i]['mois']; ?></td>
+                <td><?php echo $this->lesStats[$i]['nbFiches']; ?></td>
+                <td><?php echo $this->lesStats[$i]['total']; ?></td>
+            </tr>
+            <?php
+            //actualiser les cumuls
+            $nbFiches++;
+            $totalMontant+=$this->lesStats[$i]['total'];
+            $i++;
+        } // fin total fiches de frais d'un meme visiteur
+        ?>
+        <td><?php echo "Utilisateur :" . $utilisateurCourant . "  Nombre de fiches : " . $nbFiches . "  Montant total :" . $totalMontant . "</br>"; ?></td>
+        <?php
+        }
+        ?>

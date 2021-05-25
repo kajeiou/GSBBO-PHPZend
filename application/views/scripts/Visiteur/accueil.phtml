@@ -1,0 +1,13 @@
+<?php
+
+echo "Bienvenue " . Zend_Auth::getInstance()->getIdentity()->login . "<br><br>Vous etes actuellement connect&eacute; en tant que ".Zend_Auth::getInstance()->getIdentity()->role ;
+?>
+<a href="<?php echo $this->url(array('controller' => 'auth', 'action' => 'logout')); ?>">
+    Deconnexion
+</a>
+
+<h1>Accueil</h1>
+
+
+
+?>

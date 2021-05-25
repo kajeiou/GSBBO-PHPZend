@@ -1,0 +1,11 @@
+<p>Etes-vous sur de vouloir supprimer ce visiteur:
+    
+    '<?php echo $this->escape($this->visiteur["id"]) ." ". $this->escape($this->visiteur["nom"]) . " (identifiant: " . $this->visiteur['prenom'] . ")"; ?>' ?
+</p>
+<form action="<?php echo $this->url(array('controller' => "visiteur", "action" => "supprimer")); ?>" method="post">
+    <div>
+        <input type="hidden" name="id" value="<?php echo $this->visiteur['id'];?>">
+        <input type="submit" name="supprimer" value="Oui">
+        <input type="submit" name="supprimer" value="Non">
+    </div>
+</form>

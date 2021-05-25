@@ -1,0 +1,23 @@
+<h2>Langue que parlent les visiteurs</h2><br><br>
+<table border="1">
+    <tr>
+        <th>IdLangue</th>
+        <th>Libelle</th>
+        <th>Id Visiteur</th>
+        <th>Nom Prenom</th>
+        <th>Niveau</th>
+       
+    </tr>
+    <?php foreach($this->lesLanguesVisiteurs as $UneLangue) { ?>
+    <tr>
+        <td><?php echo $UneLangue->idLangue; ?></td>
+        <td><?php echo $UneLangue->getLangue()->libelle; ?></td>
+        <td><?php echo $UneLangue->idVisiteur; ?></td>
+        <td><?php echo $UneLangue->getVisiteur()->nom." ".$UneLangue->getVisiteur()->prenom ?></td>
+        <td><?php echo $UneLangue->niveau; ?></td>
+        
+        
+    </tr>
+        
+    <?php } ?>
+</table>

@@ -1,0 +1,18 @@
+<p>Nombre de voiture par marque</p>
+
+<table border="1">
+    <tr>
+        <th>Marque</th>
+        <th>Nombre de voitures </th>
+    </tr>
+    <?php
+    var_dump($this->lesLignes);
+    foreach ($this->lesLignes as $uneMarque) {
+        echo "<tr><td>";
+        echo $uneMarque['marque'];
+        echo "</td><td>";
+        echo $uneMarque['nbMarque'];
+        echo "</td></tr>";
+    }
+    ?> 
+</table>

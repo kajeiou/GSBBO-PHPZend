@@ -1,0 +1,45 @@
+<h3>Les fiches de frais</h3>
+Toutes les fiches de frais : <a href="<?php
+echo $this->url(array('controller' => 'fichefrais', 'action' => 'exportercsv'));
+?>">Exporter un fichier</a><br><br>
+<table border="1">
+    <tr>
+        <th>Id Visiteur</th>
+        <th>Nom - Prénom</th>
+        <th>Mois</th>
+        <th>NbJustificatifs</th>
+    </tr>
+    <?php foreach ($this->lesFichesFrais as $uneFicheFrais) : ?>
+        <tr>
+            <td><?php echo $this->escape($uneFicheFrais->idVisiteur); ?></td>
+            <td><?php echo $uneFicheFrais->getVisiteur()->nom, ' ', $uneFicheFrais->getVisiteur()->prenom; ?></td>
+            <td><?php echo $this->escape($uneFicheFrais->mois); ?> </td>
+            <td><?php echo $this->escape($uneFicheFrais->nbJustificatifs); ?> </td>
+        </tr> 
+
+    <?php endforeach; ?>
+</table><br><br>
+
+<div class="pagination">
+    <?php
+    $pages = $this->lesFichesFrais->getPages();
+    if ($pages->current !== $pages->first) {
+        echo "<a href=?page=$pages->first> <<</a>&nbsp;";
+    }
+
+    if ($pages->current > $pages->first) {
+        echo "<a href=?page=$pages->previous> <</a>&nbsp;";
+    }
+
+    foreach ($pages->pagesInRange as $page) {
+        echo "<a href=?page=$page>$page</a>&nbsp;";
+    }
+    if ($pages->current < $pages->last) {
+        echo "<a href=?page=$pages->next> ></a>&nbsp;";
+    }
+
+    if ($pages->current !== $pages->last) {
+        echo "<a href=?page=$pages->last> >></a>&nbsp;";
+    }
+    ?>
+</div>
